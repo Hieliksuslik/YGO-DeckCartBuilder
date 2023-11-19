@@ -54,6 +54,7 @@ namespace WebScraper {
             string[] cardList = File.ReadAllLines(inputPath);
             List<CardInfo> shoppingList = new List<CardInfo>();
 
+
             foreach (string cardName in cardList){
                 Console.WriteLine(cardName);
                 string html = "";
