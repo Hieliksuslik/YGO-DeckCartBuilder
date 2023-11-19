@@ -3,6 +3,8 @@ using System.IO;
 using System.Collections.Generic;
 using HtmlAgilityPack;
 using System.Linq;
+using CsvHelper;
+using System.Globalization;
 
 
 namespace WebScraper {
@@ -75,14 +77,33 @@ namespace WebScraper {
                 shoppingList.Add(new CardInfo(cardResult, cardName));
             }
             
+            WriteToUserFileExtension(shoppingList, outputPath);
+
+            WriteToCsvFileExtension(shoppingList, outputPath);
+
+            return 0;
+        }
+
+        public static void WriteToUserFileExtension(List<CardInfo> shoppingList, string outputPath){
             using(TextWriter writer = new StreamWriter(outputPath)){
                 foreach (var item in shoppingList){
                     writer.WriteLine(item);
                     writer.WriteLine();
                 }
             }
-
-            return 0;
         }
+
+        public static void WriteToCsvFileExtension(List<CardInfo> shoppingList, string outputPath){
+            string newFile = outputPath.Replace(Path.GetExtension(outputPath), ".csv");
+            using(var writer = new StreamWriter(newFile)){
+                using(var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)){
+                    foreach(var record in shoppingList){
+                        csv.WriteRecord(record);
+                        csv.NextRecord();
+                    }
+                }
+            }
+        }
+
     }
 }
