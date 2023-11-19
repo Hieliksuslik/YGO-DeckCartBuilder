@@ -6,6 +6,17 @@ Data is pulled from https://yugiohprices.com/
 
 ## Input:
 Text File of cardnames.  
+### Format:
+One after another, no additional spaces at the end of each line.  
+
+Dark Magician  
+Timaeus the United Dragon  
+The Bystial Lubellion  
+Bystial Druiswurm  
+Bystial Magnamhut  
+Bystial Saronir  
+Dark Magician Girl  
+
 ## Output:
 Text File for each cardname, with each card entry containing the vendor name, edition, rarity, condition, link-to-vendor-listing, and price.  
 
