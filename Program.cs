@@ -1,12 +1,9 @@
 ﻿using System;
-using CsvHelper;
 using System.IO;
 using System.Collections.Generic;
-using System.Globalization;
 using HtmlAgilityPack;
 using System.Linq;
-using System.Diagnostics;
-using System.Threading;
+
 
 namespace WebScraper {
     
@@ -56,7 +53,6 @@ namespace WebScraper {
             List<CardInfo> shoppingList = new List<CardInfo>();
 
             foreach (string cardName in cardList){
-                //Thread.Sleep(100);
                 string html = @$"https://yugiohprices.com/card_price?name={cardName.Replace(" ", "%20")}";
                 var htmlDoc = web.Load(html);
 
