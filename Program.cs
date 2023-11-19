@@ -70,8 +70,6 @@ namespace WebScraper {
                     writer.WriteLine();
                 }
             }
-            
-            // File.WriteAllLines("./ShoppingFile.txt", (IEnumerable<string>)shoppingList);
 
             return 0;
         }
