@@ -28,7 +28,7 @@ namespace WebScraper {
         }
 
         override public string ToString(){
-            return $"CardName: \t\t\t{CardName}\nSeller: \t\t\t{SellerSite}\nEdition: \t\t\t{Edition}\nRarity: \t\t\t{Rarity}\nCondition: \t\t\t{Condition}\nListing Link: \t\t{ListingLink}\nPrice: \t\t\t\t{Price}";
+            return $"CardName: \t\t{CardName}\nSeller: \t\t\t{SellerSite}\nEdition: \t\t\t{Edition}\nRarity: \t\t\t{Rarity}\nCondition: \t\t\t{Condition}\nListing Link: \t\t{ListingLink}\nPrice: \t\t\t\t{Price}";
         }
     }
     
