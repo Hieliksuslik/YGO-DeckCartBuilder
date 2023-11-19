@@ -16,6 +16,7 @@ Bystial Druiswurm
 Bystial Magnamhut  
 Bystial Saronir  
 Dark Magician Girl  
+...  
 
 ## Output:
 Text File for each cardname, with each card entry containing the vendor name, edition, rarity, condition, link-to-vendor-listing, and price.  
