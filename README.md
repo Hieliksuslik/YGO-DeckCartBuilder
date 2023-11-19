@@ -1,6 +1,6 @@
 # YGO-DeckCartBuilder
 
-A little project for myself to practice webscraping. 
+A little project for myself to practice minor webscraping.
 I have no intentioning of financial gain from this, just wanted a quick way to make the cheapest possible shopping cart for the decks I want to play.
 Data is pulled from https://yugiohprices.com/
 
