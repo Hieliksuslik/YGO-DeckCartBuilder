@@ -32,5 +32,5 @@ This does not take into account the number of copies of each card you want.
 This is just to mainly get the links to each vendor in a single place for ease of shopping-cart creation.  
 
 ## TODO:
-~~Add file output options. Likely have it as only csv output so that it's easier to parse through a spreadsheet. ~~  
-Outputs a csv file alongside the user given text file
+~~Add file output options. Likely have it as only csv output so that it's easier to parse through a spreadsheet.~~  
+Outputs a csv file alongside the user given text file now
