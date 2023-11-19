@@ -36,13 +36,27 @@ namespace WebScraper {
     }
     
         static int Main(string[] args){
+            string inputPath = "";
+            string outputPath = "";
+            // Parse args/arg checking
+            if(args.Length != 2) {
+                inputPath = args[0];
+                outputPath = args[1];
+            }
+            else {
+                Console.WriteLine("Insufficient Arguments Passed");
+                Console.WriteLine("Usage: arg[0] = Input File, arg[1] = Output Destination");
+
+                return 1;
+            }
+
             HtmlWeb web = new HtmlWeb();
 
-            string[] cardList = File.ReadAllLines("./MockData.txt");
+            string[] cardList = File.ReadAllLines(inputPath);
             List<CardInfo> shoppingList = new List<CardInfo>();
 
             foreach (string cardName in cardList){
-                Thread.Sleep(100);
+                //Thread.Sleep(100);
                 string html = @$"https://yugiohprices.com/card_price?name={cardName.Replace(" ", "%20")}";
                 var htmlDoc = web.Load(html);
 
@@ -54,9 +68,10 @@ namespace WebScraper {
                 shoppingList.Add(new CardInfo(cardResult, cardName));
             }
             
-            using(TextWriter writer = new StreamWriter("./ShoppingFile.txt")){
+            using(TextWriter writer = new StreamWriter(outputPath)){
                 foreach (var item in shoppingList){
                     writer.WriteLine(item);
+                    writer.WriteLine();
                 }
             }
             
