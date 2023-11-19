@@ -36,7 +36,7 @@ namespace WebScraper {
             string inputPath = "";
             string outputPath = "";
             // Parse args/arg checking
-            if(args.Length != 2) {
+            if(args.Length == 2) {
                 inputPath = args[0];
                 outputPath = args[1];
             }
@@ -53,7 +53,18 @@ namespace WebScraper {
             List<CardInfo> shoppingList = new List<CardInfo>();
 
             foreach (string cardName in cardList){
-                string html = @$"https://yugiohprices.com/card_price?name={cardName.Replace(" ", "%20")}";
+                Console.WriteLine(cardName);
+                string html = "";
+                // Edge Case: & in name
+                if(cardName.Contains("&")){
+                    string adjustedName = cardName.Replace("&", "%26");
+                    adjustedName = adjustedName.Replace(" ", "+");
+                    html = @$"https://yugiohprices.com/card_price?name={adjustedName}";
+                }
+                else {
+                    html = @$"https://yugiohprices.com/card_price?name={cardName.Replace(" ", "%20")}";
+                }
+                
                 var htmlDoc = web.Load(html);
 
                 var cardResult = htmlDoc.DocumentNode
