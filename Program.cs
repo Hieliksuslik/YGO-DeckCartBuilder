@@ -49,25 +49,23 @@ namespace WebScraper {
                 return 1;
             }
 
-            HtmlWeb web = new HtmlWeb();
-
             string[] cardList = File.ReadAllLines(inputPath);
             List<CardInfo> shoppingList = new List<CardInfo>();
 
-
+            HtmlWeb web = new HtmlWeb();
             foreach (string cardName in cardList){
                 Console.WriteLine(cardName);
                 string html = "";
                 // Edge Case: & in name
                 if(cardName.Contains("&")){
-                    string adjustedName = cardName.Replace("&", "%26");
-                    adjustedName = adjustedName.Replace(" ", "+");
+                    string adjustedName = cardName.Replace("&", "%26").Replace(" ", "+");
+                    // adjustedName = adjustedName.Replace(" ", "+");
                     html = @$"https://yugiohprices.com/card_price?name={adjustedName}";
                 }
                 else {
                     html = @$"https://yugiohprices.com/card_price?name={cardName.Replace(" ", "%20")}";
                 }
-                
+
                 var htmlDoc = web.Load(html);
 
                 var cardResult = htmlDoc.DocumentNode
