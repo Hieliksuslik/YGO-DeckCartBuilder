@@ -49,31 +49,37 @@ namespace WebScraper {
                 return 1;
             }
 
-            string[] cardList = File.ReadAllLines(inputPath);
+            string[] cardNames = File.ReadAllLines(inputPath);
+            List<string> cardLinks = new List<string>();
+
+            foreach (string name in cardNames){
+                if(name.Contains("&")){
+                    //string adjustedName = name.Replace("&", "%26").Replace(" ", "+");
+                    cardLinks.Add(@$"https://yugiohprices.com/card_price?name={name}");
+                }
+                else {
+                    //string adjustedName = name.Replace(" ", "%20");
+                    cardLinks.Add(@$"https://yugiohprices.com/card_price?name={name}");
+                }
+            }
+
             List<CardInfo> shoppingList = new List<CardInfo>();
 
             HtmlWeb web = new HtmlWeb();
-            foreach (string cardName in cardList){
-                Console.WriteLine(cardName);
-                string html = "";
-                // Edge Case: & in name
-                if(cardName.Contains("&")){
-                    string adjustedName = cardName.Replace("&", "%26").Replace(" ", "+");
-                    // adjustedName = adjustedName.Replace(" ", "+");
-                    html = @$"https://yugiohprices.com/card_price?name={adjustedName}";
-                }
-                else {
-                    html = @$"https://yugiohprices.com/card_price?name={cardName.Replace(" ", "%20")}";
-                }
 
-                var htmlDoc = web.Load(html);
+            foreach(string link in cardLinks) {
+                var htmlDoc = web.Load(link);
 
                 var cardResult = htmlDoc.DocumentNode
                 .SelectSingleNode("//table[@id='other_merchants']")
                 .SelectSingleNode("//tr[@id='']")
                 .Descendants("p");
 
-                shoppingList.Add(new CardInfo(cardResult, cardName));
+                var cardTitle = htmlDoc.DocumentNode
+                .SelectSingleNode("//h1[@id='item_name']").InnerText;
+
+                Console.WriteLine(cardTitle);
+                shoppingList.Add(new CardInfo(cardResult, cardTitle));
             }
             
             WriteToUserFileExtension(shoppingList, outputPath);
