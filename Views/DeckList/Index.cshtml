@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Welcome!</h1>
+<a href='@Url.Action("ShoppingList", "DeckList")'>
+    <input type='button' value='Dummy Button' />
+</a>
+<br />
+<form method="post" enctype="multipart/form-data" asp-controller="DeckList" asp-action="ShoppingList">
+    <span>Select a File</span>
+    <input type="file" name="postedFile" />
+    <input type="submit" value="Upload" />
+</form>

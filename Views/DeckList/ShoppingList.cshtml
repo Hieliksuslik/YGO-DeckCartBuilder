@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Deck List Creator";
+}
+
+<h2>Index</h2>
+<p>Testing</p>
+<br />
+<p>Trying out Using a table generated with a loop:</p>
+<br />
+
+<table id="ShoppingCart">
+    <tr>
+        <th>Name</th>
+        <th>Edition</th>
+        <th>Rarity</th>
+        <th>Condition</th>
+        <th>Price</th>
+        <th>Seller Link</th>
+    </tr>
+    @foreach(var card in ViewBag.ShoppingList){
+        <tr>
+            <td>@card.CardName</td>
+            <td>@card.Edition</td>
+            <td>@card.Rarity</td>
+            <td>@card.Condition</td>
+            <td>@card.Price</td>
+            <td>
+                <a href=@card.ListingLink>@card.SellerSite</a>
+            </td>
+        </tr>
+    }
+</table>
