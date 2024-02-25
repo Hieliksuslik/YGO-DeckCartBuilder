@@ -27,6 +27,6 @@ public class CardInfo {
             Rarity = "N/A";
             Condition = "N/A";
             ListingLink = "N/A";
-            Price = "0.00";
+            Price = "$0.00";
         }
 }
