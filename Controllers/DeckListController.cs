@@ -51,16 +51,26 @@ public class DeckListController : Controller{
         foreach(string link in cardLinks) {
             Console.WriteLine(link + "\n");
             var htmlDoc = web.Load(link);
+            string cardTitle = "";
 
-            var cardResult = htmlDoc.DocumentNode
-            .SelectSingleNode("//table[@id='other_merchants']")
-            .SelectSingleNode("//tr[@id='']")
-            .Descendants("p");
 
-            var cardTitle = htmlDoc.DocumentNode
-            .SelectSingleNode("//h1[@id='item_name']").InnerText;
+            try {
+                cardTitle = htmlDoc.DocumentNode
+                    .SelectSingleNode("//h1[@id='item_name']").InnerText;
 
-            shoppingList.Add(new CardInfo(cardResult, cardTitle));
+                var cardResult = htmlDoc.DocumentNode
+                    .SelectSingleNode("//table[@id='other_merchants']")
+                    .SelectSingleNode("//tr[@id='']")
+                    .Descendants("p");
+
+                shoppingList.Add(new CardInfo(cardResult, cardTitle));
+            } catch (Exception ex){
+                Console.WriteLine(ex.Message);
+
+                shoppingList.Add(new CardInfo(cardTitle));
+
+                continue;
+            }
         }
 
         ViewBag.ShoppingList = shoppingList;    
