@@ -1,3 +1,4 @@
+using System.Globalization;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic.FileIO;
@@ -22,6 +23,8 @@ public class DeckListController : Controller{
         using(TextFieldParser csvParser = new TextFieldParser(postedFile.OpenReadStream())){
             csvParser.SetDelimiters(new string[] { "," });
             //csvParser.HasFieldsEnclosedInQuotes = true;
+
+            //TODO: Likely not the best way to do this in a using
             while(!csvParser.EndOfData){
                 cardNames.AddRange(csvParser.ReadFields());
             }
@@ -72,8 +75,14 @@ public class DeckListController : Controller{
                 continue;
             }
         }
+        decimal sum = 0.00M;
 
-        ViewBag.ShoppingList = shoppingList;    
+        foreach(var card in shoppingList){
+            sum += Decimal.Parse(card.Price, NumberStyles.AllowCurrencySymbol | NumberStyles.Currency);
+        }
+
+        ViewBag.ShoppingList = shoppingList;
+        ViewBag.FinalPrice = sum; 
         return View();
     }
 }
