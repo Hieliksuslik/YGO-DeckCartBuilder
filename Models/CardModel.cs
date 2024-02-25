@@ -20,14 +20,13 @@ public class CardInfo {
             ListingLink = CardResult.ElementAt(4).Element("a").Attributes["href"].Value;
             Price = CardResult.ElementAt(5).InnerText;
         }
-
-        public CardInfo(string cardname, string sellerSite, string edition, string rarity, string condition, string listinglink, string price){
-            CardName = cardname;
-            SellerSite = sellerSite;
-            Edition = edition;
-            Rarity = rarity;
-            Condition = condition;
-            ListingLink = listinglink;
-            Price = price;
+        public CardInfo(string cardname){
+            CardName = "PlaceHolder for missing";
+            SellerSite = "N/A";
+            Edition = "N/A";
+            Rarity = "N/A";
+            Condition = "N/A";
+            ListingLink = "N/A";
+            Price = "0.00";
         }
 }
