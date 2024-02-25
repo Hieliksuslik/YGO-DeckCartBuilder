@@ -17,6 +17,7 @@
         <th>Price</th>
         <th>Seller Link</th>
     </tr>
+
     @foreach(var card in ViewBag.ShoppingList){
         <tr>
             <td>@card.CardName</td>
@@ -29,4 +30,12 @@
             </td>
         </tr>
     }
+    <tr>
+        <td><b>FINAL PRICE:</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>@($"${ViewBag.FinalPrice}")</td>
+        <td></td>
+    </tr>
 </table>
