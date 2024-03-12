@@ -78,7 +78,7 @@ public class DeckListController : Controller{
         decimal sum = 0.00M;
 
         foreach(var card in shoppingList){
-            sum += Decimal.Parse(card.Price, NumberStyles.AllowCurrencySymbol | NumberStyles.Currency);
+            sum += Decimal.Parse(card.Price, NumberStyles.AllowCurrencySymbol | NumberStyles.Currency, new CultureInfo("en-US"));
         }
 
         ViewBag.ShoppingList = shoppingList;
