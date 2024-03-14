@@ -5,3 +5,13 @@
 <div class="text-center">
     <h1 class="display-4">YGO Shopping Cart Builder</h1>
 </div>
+
+<div class="text-center">
+    <h1>Welcome!</h1>
+</div>
+
+<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="ShoppingList">
+    <span>Select a File</span>
+    <input type="file" name="postedFile" />
+    <input type="submit" value="Upload" />
+</form>
