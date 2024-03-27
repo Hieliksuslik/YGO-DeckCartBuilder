@@ -21,8 +21,11 @@ body {
   margin-bottom: 60px;
 }
 
-#ShoppingCart, th, td {
-  border: 1px solid;
-  border-collapse: collapse;
-  padding: 8px;
+table {
+  border: 2px solid rgb(140 140 140);
+}
+
+th, td {
+  border: 1px solid rgb(160 160 160);
+  padding: 4px 6px;
 }

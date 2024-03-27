@@ -2,40 +2,38 @@
     ViewData["Title"] = "Shopping List";
 }
 
-<h2>Index</h2>
-<p>Testing</p>
-<br />
-<p>Trying out Using a table generated with a loop:</p>
-<br />
-
 <table id="ShoppingCart">
-    <tr>
-        <th>Name</th>
-        <th>Edition</th>
-        <th>Rarity</th>
-        <th>Condition</th>
-        <th>Price</th>
-        <th>Seller Link</th>
-    </tr>
-
-    @foreach(var card in ViewBag.ShoppingList){
+    <thead>
         <tr>
-            <td>@card.CardName</td>
-            <td>@card.Edition</td>
-            <td>@card.Rarity</td>
-            <td>@card.Condition</td>
-            <td>@card.Price</td>
-            <td>
-                <a href=@card.ListingLink>@card.SellerSite</a>
-            </td>
+            <th scope="col">Name</th>
+            <th scope="col">Edition</th>
+            <th scope="col">Rarity</th>
+            <th scope="col">Condition</th>
+            <th scope="col">Price</th>
+            <th scope="col">Seller Link</th>
         </tr>
-    }
-    <tr>
-        <td><b>FINAL PRICE:</b></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>@($"${ViewBag.FinalPrice}")</td>
-        <td></td>
-    </tr>
+    </thead>
+    <tbody>
+        @foreach(var card in ViewBag.ShoppingList){
+            <tr>
+                <th scope="row">@card.CardName</th>
+                <td>@card.Edition</td>
+                <td>@card.Rarity</td>
+                <td>@card.Condition</td>
+                <td>@card.Price</td>
+                <td>
+                    <a href=@card.ListingLink target="_blank" rel="noreferrer noopener">@card.SellerSite</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th scope="row" colspan="4"><b>FINAL PRICE:</b></th>
+            <td>@($"${ViewBag.FinalPrice}")</td>
+            <td></td>
+        </tr>
+    </tfoot>
+   
+    
 </table>

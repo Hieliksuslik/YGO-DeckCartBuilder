@@ -10,8 +10,18 @@
     <h1>Welcome!</h1>
 </div>
 
-<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="ShoppingList">
-    <span>Select a File</span>
-    <input type="file" name="postedFile" />
-    <input type="submit" value="Upload" />
-</form>
+<br />
+<br />
+
+<div class="text-center">
+    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="ShoppingList">
+        <span>Select a file to upload</span>
+        <br />
+        <br />
+        <div>
+            <input type="file" name="postedFile" />
+            <input type="submit" value="Upload" />
+        </div>
+    </form>
+</div>
+

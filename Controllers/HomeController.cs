@@ -45,10 +45,6 @@ public class HomeController : Controller
             }
         }
 
-        foreach(string name in cardNames){
-            Console.WriteLine($"{name}\n");
-        }
-
         List<string> cardLinks = new List<string>();
 
         foreach (string name in cardNames){
@@ -67,10 +63,8 @@ public class HomeController : Controller
         HtmlWeb web = new HtmlWeb();
 
         foreach(string link in cardLinks) {
-            Console.WriteLine(link + "\n");
             var htmlDoc = web.Load(link);
             string cardTitle = "";
-
 
             try {
                 cardTitle = htmlDoc.DocumentNode
